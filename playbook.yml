@@ -4,6 +4,12 @@
   gather_facts: no 
 
   tasks:
+    - name: Print out connection variables 
+      debug:
+        msg:
+          - "{{ ansible_connection }}"
+          - "{{ ansible_network_os }}"
+          
     - name: Ensure the desired SNMP strings are present 
       ios_config:
         commands:
