@@ -1,0 +1,11 @@
+---
+- name: SNMP ro/rw string configuration 
+  hosts: tag_cisco 
+  gather_facts: no 
+
+  tasks:
+    - name: Ensure the desired SNMP strings are present 
+      ios_config:
+        commands:
+          - snmp-server community ansible-public RO
+          - snmp-server community ansible-private RW
