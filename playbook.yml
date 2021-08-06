@@ -2,8 +2,8 @@
 - name: SNMP ro/rw string configuration 
   hosts: tag_cisco 
 #  gather_facts: no 
-  collections:
-  - cisco.ios
+#  collections:
+#  - cisco.ios
 
   tasks:
     - name: Print out connection variables 
@@ -13,7 +13,7 @@
           - "{{ ansible_network_os }}"
 
     - name: IOS - Gather facts
-      cisco.ios.ios_facts:
+      ios_facts:
         gather_subset: "all"  #default is !config (all except config)
       when: ansible_network_os|default('') == 'ios'
       register: gathered_ios_facts          
